@@ -28,7 +28,10 @@ public class BatchTest {
 				while((line=br.readLine())!=null) {
 					String[] strs = line.split("\\|");
 					List<String> strList = new ArrayList<String>();
-					for(int i=0, max=13;i<=max;i++) {
+					for(int i=0, max=9;i<=max;i++) {
+						strList.add(strs[i]);
+					}
+					for(int i=11, max=12;i<=max;i++) {
 						strList.add(strs[i]);
 					}
 					list.add(strList);
