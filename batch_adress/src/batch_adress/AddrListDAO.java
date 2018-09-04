@@ -7,7 +7,7 @@ public interface AddrListDAO {
 
 	public List<AddrListInfo> selectAddrList(AddrListInfo ai)throws SQLException;
 	public AddrListInfo selectAdd(AddrListInfo ai)throws SQLException;
-	public int insertList(List<List<String>> list);
+	public int insertList(List<List<String>> list)throws SQLException;
 	/*public int deleteList(AddrListInfo ai)throws SQLException;
 	public int updateList(AddrListInfo ai)throws SQLException;
 */

@@ -40,7 +40,7 @@ public class AddrListDAOImpl implements AddrListDAO {
 	}
 
 	@Override
-	public int insertList(List<List<String>> list) {
+	public int insertList(List<List<String>> list) throws SQLException {
 		long s = System.currentTimeMillis();
 		int rCnt = 0;
 		Connection con = DBCon.getCon();
@@ -48,25 +48,26 @@ public class AddrListDAOImpl implements AddrListDAO {
 		String sql = "insert into addr_list values(seq_alnum.nextval,?,?,?,?,?,?,?,?,?,?,?,?)";
 		try {
 			ps = con.prepareStatement(sql);
-			for(int j=0; j<list.size(); j++) {
+			for (int j = 0; j < list.size(); j++) {
 				List<String> strList = list.get(j);
-				for(int i=0;i<strList.size();i++) {
-					ps.setString(i+1, strList.get(i));
+				for (int i = 0; i < strList.size(); i++) {
+					ps.setString(i + 1, strList.get(i));
 				}
 				ps.addBatch();
 				ps.clearParameters();
-				if(j+1%1000==0 || j+1==list.size()) {
+				if (j + 1 % 1000 == 0 || j + 1 == list.size()) {
 					rCnt += ps.executeBatch().length;
 				}
 			}
-			DBCon.getCon();
-		}catch(SQLException e) {
-			DBCon.getCon();
+			DBCon.commit();
+		} catch (SQLException e) {
+			DBCon.rollback();
 			e.printStackTrace();
-		}finally {
+		} finally {
 			DBCon.close();
 		}
-		System.out.println();
-	}
 
+		System.out.println("총 수행시간:" + (System.currentTimeMillis() - s));
+		return rCnt;
+	}
 }
