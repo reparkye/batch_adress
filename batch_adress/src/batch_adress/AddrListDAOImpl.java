@@ -24,13 +24,12 @@ public class AddrListDAOImpl implements AddrListDAO {
 							,rs.getString("alStateEn"),rs.getString("alVil"),rs.getString("alVilEn")
 							,rs.getString("alLoadCode"),rs.getString("alLoadName"),rs.getString("alLoadNameEn")
 							,rs.getString("alBuilOrg"),rs.getString("alBuilSub"));
+					aList.add(aai);
 				}
-				
+				return aList;
 			}catch(SQLException e) {
 				throw e;
 			}
-		
-		return null;
 	}
 
 	@Override
@@ -66,7 +65,6 @@ public class AddrListDAOImpl implements AddrListDAO {
 		} finally {
 			DBCon.close();
 		}
-
 		System.out.println("총 수행시간:" + (System.currentTimeMillis() - s));
 		return rCnt;
 	}

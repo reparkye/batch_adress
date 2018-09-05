@@ -16,13 +16,13 @@ public class BatchTest {
 		//String path = "D:\\java_study\\zipcode_DB";
 				
 		File f = new File(path);
-		System.out.println("폴더유뮤 :" + f.isDirectory());
-		System.out.println("대상폴더유뮤 :" + f.exists());
+		//System.out.println("폴더유뮤 :" + f.isDirectory());
+		//System.out.println("대상폴더유뮤 :" + f.exists());
 		File[] fList = f.listFiles();
 		List<List<String>> list = new ArrayList<List<String>>();
 		try {
 		for(File ff : fList) {
-			if(ff.getName().endsWith("세종특별자치시.txt")) {
+			if(ff.getName().endsWith(".txt")) {
 				list = new ArrayList<List<String>>();
 				FileInputStream fis = new FileInputStream(ff);
 				InputStreamReader fr = new InputStreamReader(fis,"euc-kr");
