@@ -12,8 +12,8 @@ import java.util.List;
 public class BatchTest {
 
 	public static void main(String[] args){
-		//String path = "C:\\jsp_study\\zipcode_DB";
-		String path = "D:\\java_study\\zipcode_DB";
+		String path = "C:\\jsp_study\\zipcode_DB";
+		//String path = "D:\\java_study\\zipcode_DB";
 				
 		File f = new File(path);
 		System.out.println("폴더유뮤 :" + f.isDirectory());
